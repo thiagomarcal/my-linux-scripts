@@ -29,7 +29,6 @@ func main() {
 
 	args := os.Args[1:]
 
-
 	if len(args) < 2 {
 		fmt.Println("Usage: largest-dirs <root-dir> <limit>")
 		return
@@ -80,12 +79,9 @@ func main() {
 		directories = append(directories, Directory{Size: size, Path: path})
 	}
 
-	// Sort directories by size.
 	sort.Sort(DirectoryList(directories))
 
-	// Display the top head largest directories.
 	fmt.Println(fmt.Sprintf("Top %s largest directories:", limit))
-
 
 	headConv, err := strconv.Atoi(limit)
 
@@ -113,7 +109,6 @@ func renderTable(head int, documents DirectoryList) {
 	t.Render()
 }
 
-
 // formatSize converts a size in bytes to a human-readable string.
 func formatSize(size int64) string {
 	units := []string{"KB", "MB", "GB", "TB"}
@@ -129,5 +124,4 @@ func formatSize(size int64) string {
 	}
 
 	return fmt.Sprintf("%d %s", size, units[i])
-
 }
